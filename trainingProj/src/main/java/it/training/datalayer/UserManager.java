@@ -8,7 +8,7 @@ public interface UserManager {
 
 	User createAndSaveUser(String name, String surname);
 
-	List<User> getUsersByName(String name);
-
 	User getUser(Long id);
+
+	List<User> getUsersByName(String name);
 }

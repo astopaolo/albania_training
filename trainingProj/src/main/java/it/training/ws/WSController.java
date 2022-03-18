@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.training.bean.Student;
+import it.training.bean.Teacher;
 import it.training.bean.User;
 import it.training.datalayer.StudentManager;
+import it.training.datalayer.TeacherManager;
 import it.training.datalayer.UserManager;
 
 @RestController
@@ -20,11 +22,51 @@ public class WSController implements WebServices {
 	private UserManager userManager;
 	@Autowired
 	private StudentManager studentManager;
+	@Autowired
+	private TeacherManager teacherManager;
+
+	@Override
+	@GetMapping(value = "/createAndSaveStudent")
+	public Student createAndSaveStudent(final String name, final String surname, final int grade,
+			final String schoolName) {
+		return studentManager.createAndSaveStudent(name, surname, grade, schoolName);
+	}
+
+	@Override
+	@GetMapping(value = "/createAndSaveTeacher")
+	public Teacher createAndSaveTeacher(final String name, final String surname, final String subject,
+			final String schoolName) {
+		return teacherManager.createAndSaveTeacher(name, surname, subject, schoolName);
+	}
 
 	@Override
 	@GetMapping(value = "/createAndSaveUser")
 	public User createAndSaveUser(final String name, final String surname) {
 		return userManager.createAndSaveUser(name, surname);
+	}
+
+	@Override
+	@GetMapping(value = "/getStudent")
+	public Student getStudent(final Long id) {
+		return studentManager.getStudent(id);
+	}
+
+	@Override
+	@GetMapping(value = "/getStudentBySchoolName")
+	public List<Student> getStudentBySchoolName(final String schoolName) {
+		return studentManager.getStudentBySchoolName(schoolName);
+	}
+
+	@Override
+	@GetMapping(value = "/getTeacher")
+	public Teacher getTeacher(final Long id) {
+		return teacherManager.getTeacher(id);
+	}
+
+	@Override
+	@GetMapping(value = "/getTeacherBySchoolName")
+	public List<Teacher> getTeacherBySchoolName(final String schoolName) {
+		return teacherManager.getTeacherBySchoolName(schoolName);
 	}
 
 	@Override
@@ -39,24 +81,6 @@ public class WSController implements WebServices {
 		return userManager.getUsersByName(name);
 	}
 
-	@Override
-	@GetMapping(value = "/createAndSaveStudent")
-	public Student createAndSaveStudent(String name,String surname, int grade,  String schoolName) {
-		return studentManager.createAndSaveStudent(name,surname,grade, schoolName);
-	}
-
-	@Override
-	@GetMapping(value = "/getStudent")
-	public Student getStudent(final Long id) {
-		return studentManager.getStudent(id);
-	}
-
-	@Override
-	@GetMapping(value = "/getStudentBySchoolName")
-	public List<Student> getStudentBySchoolName(final String schoolName) {
-		return studentManager.getStudentBySchoolName(schoolName);
-	}
-	
 	@Override
 	@GetMapping(value = "/isBackendAlive")
 	public boolean isBackendAlive() {

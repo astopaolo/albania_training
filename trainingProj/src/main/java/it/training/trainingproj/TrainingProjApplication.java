@@ -14,8 +14,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("it.training")
 public class TrainingProjApplication {
 
-    public static void main(final String[] args) {
-	SpringApplication.run(TrainingProjApplication.class, args);
-    }
+	public static void main(final String[] args) {
+		SpringApplication.run(TrainingProjApplication.class, args);
+	}
 
 }
