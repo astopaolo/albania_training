@@ -8,9 +8,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "teacher")
-public class Teacher extends AbstractPerson {
+public class Teacher extends User {
+
+//	@Id
+//	@Column(name = "user_id")
 
 	private static final long serialVersionUID = -4015539302973160703L;
+
+//	@OneToOne
+//	@MapsId
+//	@JoinColumn(name = "user_id")
+//	private User user;
+
 	@Column
 	private String subject;
 	@Column

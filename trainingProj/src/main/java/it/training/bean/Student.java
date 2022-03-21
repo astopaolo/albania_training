@@ -11,6 +11,7 @@ import javax.persistence.Table;
 public class Student extends AbstractPerson {
 
 	private static final long serialVersionUID = -4015539302973160703L;
+
 	@Column
 	private int grade;
 	@Column
