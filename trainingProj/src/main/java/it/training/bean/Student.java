@@ -4,17 +4,33 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "student")
-public class Student extends AbstractPerson {
+public class Student extends User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private static final long serialVersionUID = -4015539302973160703L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Column
 	private int grade;
+
 	@Column
 	private String schoolName;
+
+	@OneToOne(mappedBy = "student")
+	private User user;
 
 	public Student() {
 		super();
@@ -58,7 +74,10 @@ public class Student extends AbstractPerson {
 
 	@Override
 	public String toString() {
-		return "Student [grade=" + grade + ", schoolName=" + schoolName + ", getName()=" + getName() + ", getSurname()="
-				+ getSurname() + ", getId()=" + getId() + "]";
+		return "Student [grade=" + grade + ", schoolName=" + schoolName + ", hashCode()=" + hashCode() + ", getGrade()="
+				+ getGrade() + ", getSchoolName()=" + getSchoolName() + ", getName()=" + getName() + ", getSurname()="
+				+ getSurname() + ", getStudent()=" + getStudent() + ", toString()=" + super.toString() + ", getId()="
+				+ getId() + ", getClass()=" + getClass() + "]";
 	}
+
 }
