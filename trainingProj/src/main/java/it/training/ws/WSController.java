@@ -27,16 +27,14 @@ public class WSController implements WebServices {
 
 	@Override
 	@GetMapping(value = "/createAndSaveStudent")
-	public Student createAndSaveStudent(final String name, final String surname, final int grade,
-			final String schoolName) {
-		return studentManager.createAndSaveStudent(name, surname, grade, schoolName);
+	public Student createAndSaveStudent(final int grade, final String schoolName) {
+		return studentManager.createAndSaveStudent(grade, schoolName);
 	}
 
 	@Override
 	@GetMapping(value = "/createAndSaveTeacher")
-	public Teacher createAndSaveTeacher(final String name, final String surname, final String subject,
-			final String schoolName) {
-		return teacherManager.createAndSaveTeacher(name, surname, subject, schoolName);
+	public Teacher createAndSaveTeacher(final String subject, final String schoolName) {
+		return teacherManager.createAndSaveTeacher(subject, schoolName);
 	}
 
 	@Override

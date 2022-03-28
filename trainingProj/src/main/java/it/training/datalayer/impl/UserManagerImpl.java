@@ -29,14 +29,13 @@ public class UserManagerImpl implements UserManager {
 		return null;
 	}
 
-
 	private User createUser(final String name, final String surname) {
 		User user = new User();
 		user.setName(name);
 		user.setSurname(surname);
 
 		return user;
-	}	
+	}
 
 	@Override
 	public User getUser(final Long id) {
@@ -47,6 +46,12 @@ public class UserManagerImpl implements UserManager {
 	@Override
 	public List<User> getUsersByName(final String name) {
 		return userDAO.findByName(name);
+	}
+
+	@Override
+	public User saveUser(final User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

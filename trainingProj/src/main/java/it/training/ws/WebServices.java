@@ -8,9 +8,9 @@ import it.training.bean.User;
 
 public interface WebServices {
 
-	Student createAndSaveStudent(String name, String surname, int grade, String schoolName);
+	Student createAndSaveStudent(int grade, String schoolName);
 
-	Teacher createAndSaveTeacher(String name, String surname, String subject, String schoolName);
+	Teacher createAndSaveTeacher(String subject, String schoolName);
 
 	User createAndSaveUser(String name, String surname);
 

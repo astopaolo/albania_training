@@ -11,4 +11,7 @@ public interface UserManager {
 	User getUser(Long id);
 
 	List<User> getUsersByName(String name);
+
+	User saveUser(User user);
+
 }

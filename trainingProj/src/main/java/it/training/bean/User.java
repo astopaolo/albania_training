@@ -2,13 +2,8 @@ package it.training.bean;
 
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,33 +11,19 @@ import javax.persistence.Table;
 @Table(name = "system_user")
 public class User extends AbstractIdentifierBean {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name = "id")
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-
 	private static final long serialVersionUID = -9176086902805262561L;
-
-//	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//	@PrimaryKeyJoinColumn
-//	private Teacher teacher;
-//
-//	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//	@PrimaryKeyJoinColumn
-//	private Student student;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "teacher_id", referencedColumnName = "id")
-	private Teacher teacher;
 
 	@Column
 	private String name;
 
 	@Column
 	private String surname;
+
+	@OneToOne
+	private Student student;
+
+	@OneToOne
+	private Teacher teacher;
 
 	@Override
 	public boolean equals(final Object obj) {
@@ -60,8 +41,16 @@ public class User extends AbstractIdentifierBean {
 		return name;
 	}
 
+	public Student getStudent() {
+		return student;
+	}
+
 	public String getSurname() {
 		return surname;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
 	@Override
@@ -76,12 +65,23 @@ public class User extends AbstractIdentifierBean {
 		this.name = name;
 	}
 
+	public void setStudent(final Student student) {
+		this.student = student;
+	}
+
 	public void setSurname(final String surname) {
 		this.surname = surname;
 	}
 
+	public void setTeacher(final Teacher teacher) {
+		this.teacher = teacher;
+	}
+
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", surname=" + surname + ", getId()=" + getId() + "]";
+		return "User [name=" + name + ", surname=" + surname + ", student=" + student + ", teacher=" + teacher
+				+ ", getName()=" + getName() + ", getStudent()=" + getStudent() + ", getSurname()=" + getSurname()
+				+ "]";
 	}
+
 }
