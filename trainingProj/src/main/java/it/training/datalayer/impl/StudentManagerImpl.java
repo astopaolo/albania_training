@@ -16,9 +16,8 @@ public class StudentManagerImpl implements StudentManager {
 	private StudentDAO studentDAO;
 
 	@Override
-	public Student createAndSaveStudent(final String name, final String surname, final int grade,
-			final String schoolName) {
-		Student student = createStudent(name, surname, grade, schoolName);
+	public Student createAndSaveStudent(final int grade, final String schoolName) {
+		Student student = createStudent(grade, schoolName);
 
 		try {
 			return studentDAO.save(student);
@@ -30,10 +29,9 @@ public class StudentManagerImpl implements StudentManager {
 		return null;
 	}
 
-	private Student createStudent(final String name, final String surname, final int grade, final String schoolName) {
+	private Student createStudent(final int grade, final String schoolName) {
 		Student student = new Student();
-		student.setName(name);
-		student.setSurname(surname);
+
 		student.setGrade(grade);
 		student.setSchoolName(schoolName);
 
@@ -48,7 +46,8 @@ public class StudentManagerImpl implements StudentManager {
 
 	@Override
 	public List<Student> getStudentBySchoolName(final String schoolName) {
-		return studentDAO.findByName(schoolName);
+
+		return null;
 	}
 
 }
