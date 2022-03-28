@@ -8,26 +8,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "teacher")
-public class Teacher extends User {
-
-//	@Id
-//	@Column(name = "user_id")
+public class Teacher extends AbstractIdentifierBean {
 
 	private static final long serialVersionUID = -4015539302973160703L;
-
-//	@OneToOne
-//	@MapsId
-//	@JoinColumn(name = "user_id")
-//	private User user;
 
 	@Column
 	private String subject;
 	@Column
 	private String schoolName;
-
-	public Teacher() {
-		super();
-	}
 
 	@Override
 	public boolean equals(final Object obj) {
@@ -67,8 +55,8 @@ public class Teacher extends User {
 
 	@Override
 	public String toString() {
-		return "Teacher [subject=" + subject + ", schoolName=" + schoolName + ", getName()=" + getName()
-				+ ", getSurname()=" + getSurname() + "]";
+		return "Teacher [subject=" + subject + ", schoolName=" + schoolName + ", getSchoolName()=" + getSchoolName()
+				+ ", getSubject()=" + getSubject() + "]";
 	}
 
 }

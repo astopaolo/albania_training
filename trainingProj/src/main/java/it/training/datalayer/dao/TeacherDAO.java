@@ -10,5 +10,5 @@ import it.training.bean.Teacher;
 @Repository
 public interface TeacherDAO extends JpaRepository<Teacher, Long> {
 
-	List<Teacher> findByName(String schoolName);
+	List<Teacher> findBySchoolName(String schoolName);
 }

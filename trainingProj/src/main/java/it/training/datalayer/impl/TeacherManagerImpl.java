@@ -16,9 +16,8 @@ public class TeacherManagerImpl implements TeacherManager {
 	private TeacherDAO teacherDAO;
 
 	@Override
-	public Teacher createAndSaveTeacher(final String name, final String surname, final String subject,
-			final String schoolName) {
-		Teacher teacher = createTeacher(name, surname, subject, schoolName);
+	public Teacher createAndSaveTeacher(final String subject, final String schoolName) {
+		Teacher teacher = createTeacher(subject, schoolName);
 
 		try {
 			return teacherDAO.save(teacher);
@@ -30,11 +29,8 @@ public class TeacherManagerImpl implements TeacherManager {
 		return null;
 	}
 
-	private Teacher createTeacher(final String name, final String surname, final String subject,
-			final String schoolName) {
+	private Teacher createTeacher(final String subject, final String schoolName) {
 		Teacher teacher = new Teacher();
-		teacher.setName(name);
-		teacher.setSurname(surname);
 		teacher.setSubject(subject);
 		teacher.setSchoolName(schoolName);
 
@@ -49,7 +45,7 @@ public class TeacherManagerImpl implements TeacherManager {
 
 	@Override
 	public List<Teacher> getTeacherBySchoolName(final String schoolName) {
-		return teacherDAO.findByName(schoolName);
+		return teacherDAO.findBySchoolName(schoolName);
 	}
 
 }
